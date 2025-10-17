@@ -1,21 +1,248 @@
-MIT License
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CineBR — Filmes & Séries Brasileiros</title>
+  <style>
+    :root{
+      --cor-acento: #1e88e5;     /* cor do título */
+      --texto: #111;
+      --bg: #ffffff;
+      --bg-suave:#f3f4f6;
+      --borda:#e5e7eb;
+      --rodape-bg:#0f172a;       /* cor do rodapé */
+      --rodape-texto:#e5e7eb;
+    }
+    /* tema escuro (toggle JS adiciona .escuro ao <html>) */
+    html.escuro{
+      --texto:#f3f4f6;
+      --bg:#0b1020;
+      --bg-suave:#121a33;
+      --borda:#233055;
+      --rodape-bg:#070b18;
+      --rodape-texto:#cbd5e1;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--texto); background:var(--bg);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      background:linear-gradient(0deg, var(--bg), var(--bg-suave));
+      border-bottom:1px solid var(--borda);
+      backdrop-filter:saturate(1.2) blur(6px);
+    }
+    .limite{max-width:1100px; margin:auto; padding:12px 16px}
+    .topo{
+      display:flex; gap:16px; align-items:center; justify-content:space-between;
+    }
+    h1{
+      margin:6px 0 0 0; font-size:clamp(22px, 4vw, 32px);
+      color:var(--cor-acento); letter-spacing:.3px;
+    }
+    .sub{margin:0; opacity:.8; font-size:.95rem}
+    nav ul{display:flex; gap:10px; list-style:none; padding:8px 0 0; margin:8px 0 0; flex-wrap:wrap}
+    nav a{
+      display:inline-block; padding:8px 12px; border:1px solid var(--borda);
+      text-decoration:none; color:inherit; border-radius:10px; background:var(--bg);
+    }
+    nav a:hover{border-color:var(--cor-acento)}
 
-Copyright (c) 2025 antoniowilliamsilvacardoso-a11y
+    /* barra de utilidades (3 botões) */
+    .util{
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+    }
+    .btn{
+      border:1px solid var(--borda); background:var(--bg);
+      padding:8px 12px; border-radius:10px; cursor:pointer;
+      transition:transform .02s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    main{display:grid; grid-template-columns:1fr 320px; gap:18px}
+    @media (max-width: 960px){ main{grid-template-columns:1fr} }
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+    .cartao{
+      background:var(--bg); border:1px solid var(--borda); border-radius:14px;
+      padding:16px; margin-bottom:14px;
+    }
+    .cartao h2{margin:0 0 4px; font-size:1.25rem}
+    .meta{font-size:.9rem; opacity:.8; margin-bottom:8px}
+    .tag{display:inline-block; font-size:.78rem; padding:2px 8px; border-radius:999px;
+         border:1px solid var(--borda); margin-right:6px}
+    .destaque{outline:2px solid var(--cor-acento); outline-offset:2px}
+    aside .bloco{background:var(--bg-suave); border:1px solid var(--borda); border-radius:14px; padding:14px; margin-bottom:14px}
+    aside h3{margin:0 0 8px}
+    .ajuda p{margin:.4rem 0}
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+    footer{
+      margin-top:24px; background:var(--rodape-bg); color:var(--rodape-texto);
+      padding:28px 16px;
+    }
+    .menu-inline{display:flex; gap:10px; flex-wrap:wrap}
+    .menu-inline a{color:var(--rodape-texto); opacity:.85; text-decoration:none}
+    .menu-inline a:hover{opacity:1; text-decoration:underline}
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+    /* acessibilidade: classes de fonte */
+    html.fonte-grande{font-size:18px}
+    html.fonte-gigante{font-size:20px}
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho (9. cabeçario) -->
+  <header>
+    <div class="limite topo">
+      <div>
+        <h1>CineBR — Filmes & Séries Brasileiros</h1>
+        <p class="sub">Lançamentos, resenhas e o que bombou no streaming nacional.</p>
+      </div>
+      <!-- 7. Três botões para auxiliar o blog -->
+      <div class="util" aria-label="Ferramentas do site">
+        <button class="btn" id="btnTema" title="Alternar tema claro/escuro">🌓 Tema</button>
+        <button class="btn" id="btnFonte" title="Aumentar/diminuir tamanho da fonte">🔤 Fonte</button>
+        <button class="btn" id="btnTopo"  title="Voltar ao topo da página">⤴️ Topo</button>
+      </div>
+    </div>
+    <!-- 9. Menu -->
+    <nav class="limite" aria-label="Menu principal">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#lancamentos">Lançamentos</a></li>
+        <li><a href="#resenhas">Resenhas</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#ajuda">Ajuda</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="limite" id="inicio">
+    <main>
+      <!-- Conteúdo principal -->
+      <section aria-label="Artigos">
+        <!-- 4. Conteúdo a ser explorado: últimos lançamentos e capítulos finais -->
+        <article class="cartao" id="post1">
+          <h2>Os últimos capítulos de <em>City Sem Filtro</em></h2>
+          <div class="meta">Postado em 10/10/2025 · <span class="tag">Série</span><span class="tag">Streaming</span></div>
+          <p>Resumo (sem spoilers pesados): o penúltimo episódio costura os arcos de Joana e Yuri, enquanto o final entrega uma reviravolta que conecta a 1ª temporada. Comentamos fotografia, trilha e direção — e o que esperar da temporada 3.</p>
+          <ul>
+            <li>Trilha original com referências ao manguebeat;</li>
+            <li>Direção mais dinâmica nos 20min finais;</li>
+            <li>Teorias para a próxima temporada.</li>
+          </ul>
+        </article>
+
+        <article class="cartao" id="post2">
+          <h2>Lançamentos de outubro: cinema nacional em cartaz</h2>
+          <div class="meta">Postado em 08/10/2025 · <span class="tag">Filmes</span><span class="tag">Agenda</span></div>
+          <p>Guia rápido dos títulos que estreiam neste mês — do suspense independente à comédia de estrada. Damos notas de expectativa e onde assistir (salas ou plataformas).</p>
+          <p><strong>Dica:</strong> clique em “Tema” para conforto visual à noite.</p>
+        </article>
+
+        <article class="cartao" id="post3">
+          <h2>Resenha: <em>Ritmo do Subúrbio</em></h2>
+          <div class="meta">Postado em 02/10/2025 · <span class="tag">Resenha</span><span class="tag">Música & Cinema</span></div>
+          <p>Com atuações naturais e câmera de mão, o longa acerta ao misturar drama familiar com cultura funk. Falamos de montagem, desenvolvimento de personagem e representatividade.</p>
+          <p id="lancamentos"></p>
+        </article>
+
+        <article class="cartao destaque" id="post4">
+          <h2>Guia do fim de semana: o que maratonar</h2>
+          <div class="meta">Postado em 01/10/2025 · <span class="tag">Lista</span><span class="tag">Streaming</span></div>
+          <p>Seleção de 5 séries nacionais curtinhas para fechar em 2 dias. Cada indicação tem duração total, classificação e vibe.</p>
+          <ol>
+            <li><strong>Praça 21</strong> — sitcom leve (180 min);</li>
+            <li><strong>Margem Norte</strong> — doc true crime (220 min);</li>
+            <li><strong>Lab 404</strong> — sci-fi teen (200 min);</li>
+            <li><strong>Capitais</strong> — antologia musical (150 min);</li>
+            <li><strong>Velas & Vagalumes</strong> — drama coming-of-age (210 min).</li>
+          </ol>
+        </article>
+
+        <article class="cartao" id="resenhas">
+          <h2>Editorial: por que falar de audiovisual brasileiro?</h2>
+          <div class="meta">Postado em 28/09/2025 · <span class="tag">Opinião</span></div>
+          <p>Valorizar nossas produções é fortalecer a cultura, os empregos criativos e a diversidade de narrativas. Aqui, o leitor participa com comentários e indicações.</p>
+        </article>
+      </section>
+
+      <!-- 9. Conteúdo extra -->
+      <aside aria-label="Conteúdo extra">
+        <div class="bloco">
+          <h3>Conteúdo extra</h3>
+          <p>Listas rápidas, bastidores e trailers comentados.</p>
+          <ul>
+            <li>Top 5 aberturas de séries BR</li>
+            <li>Calendário de festivais</li>
+            <li>Entrevistas curtas</li>
+          </ul>
+        </div>
+
+        <!-- 9. Ajuda -->
+        <div class="bloco ajuda" id="ajuda">
+          <h3>Ajuda</h3>
+          <p>• Use <strong>🌓 Tema</strong> para alternar claro/escuro.</p>
+          <p>• Use <strong>🔤 Fonte</strong> para mudar o tamanho do texto.</p>
+          <p>• Use <strong>⤴️ Topo</strong> para voltar rapidamente ao início.</p>
+          <p>Menu: <em>Início</em>, <em>Lançamentos</em>, <em>Resenhas</em>, <em>Contato</em>.</p>
+        </div>
+
+        <div class="bloco" id="contato">
+          <h3>Contato</h3>
+          <p>Envie sugestões: <a href="#" onclick="alert('Exemplo: contato@cinebr.example')">contato@cinebr.example</a></p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- 5. Tema do rodapé + 6. cor do rodapé -->
+  <footer>
+    <div class="limite">
+      <strong>Cultura & Educação Audiovisual</strong> — promovendo acesso, crítica e diversidade.
+      <div class="menu-inline" style="margin-top:10px">
+        <a href="#inicio">Início</a> ·
+        <a href="#lancamentos">Lançamentos</a> ·
+        <a href="#resenhas">Resenhas</a> ·
+        <a href="#ajuda">Ajuda</a>
+      </div>
+      <p style="opacity:.7; margin-top:10px">© 2025 CineBR. Conteúdo educativo sem fins comerciais.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 8. Funções dos botões
+    // Botão 1 — Tema: alterna claro/escuro (classe .escuro no <html>)
+    document.getElementById('btnTema').addEventListener('click', ()=>{
+      document.documentElement.classList.toggle('escuro');
+      // feedback rápido
+      const msg = document.documentElement.classList.contains('escuro') ? 'Tema escuro ativo' : 'Tema claro ativo';
+      console.log(msg);
+    });
+
+    // Botão 2 — Fonte: alterna 3 tamanhos (padrão → grande → gigante → padrão)
+    const cicloFontes = ['','fonte-grande','fonte-gigante'];
+    let idxFonte = 0;
+    document.getElementById('btnFonte').addEventListener('click', ()=>{
+      // remove classes antigas
+      document.documentElement.classList.remove('fonte-grande','fonte-gigante');
+      idxFonte = (idxFonte + 1) % cicloFontes.length;
+      if(cicloFontes[idxFonte]) document.documentElement.classList.add(cicloFontes[idxFonte]);
+    });
+
+    // Botão 3 — Topo: rola suavemente para o header
+    document.getElementById('btnTopo').addEventListener('click', ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    // Extras opcionais: realçar card "destaque" quando chega na seção
+    const alvo = document.getElementById('post4');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ alvo.classList.add('destaque'); }
+        else{ alvo.classList.remove('destaque'); }
+      });
+    }, {threshold:.3});
+    obs.observe(alvo);
+  </script>
+</body>
+</html>

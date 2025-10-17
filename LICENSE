@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CineBR — Filmes & Séries Brasileiros</title>
+  <title>A História cronológica de Melanie Martinez — </title>
   <style>
     :root{
       --cor-acento: #1e88e5;     /* cor do título */
@@ -94,8 +94,8 @@
   <header>
     <div class="limite topo">
       <div>
-        <h1>CineBR — Filmes & Séries Brasileiros</h1>
-        <p class="sub">Lançamentos, resenhas e o que bombou no streaming nacional.</p>
+        <h1>A História cronológica de Melanie Martinez — Todos os assuntos envolvidos à Cantora Pop Alternativa</h1>
+        <p class="sub">Como iniciou a carreira de Melanie Martinez?.</p>
       </div>
       <!-- 7. Três botões para auxiliar o blog -->
       <div class="util" aria-label="Ferramentas do site">
@@ -108,9 +108,9 @@
     <nav class="limite" aria-label="Menu principal">
       <ul>
         <li><a href="#inicio">Início</a></li>
-        <li><a href="#lancamentos">Lançamentos</a></li>
-        <li><a href="#resenhas">Resenhas</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#entrada no The Voice Kids">Entrada no The Voice Kids</a></li>
+        <li><a href="#álbum Cry Baby">Álbum Cry Baby</a></li>
+        <li><a href="#álbum K-12">Álbum K-12</a></li>
         <li><a href="#ajuda">Ajuda</a></li>
       </ul>
     </nav>
@@ -120,49 +120,49 @@
     <main>
       <!-- Conteúdo principal -->
       <section aria-label="Artigos">
-        <!-- 4. Conteúdo a ser explorado: últimos lançamentos e capítulos finais -->
+        <!-- 4.Planejamento do Álbum After School -->
         <article class="cartao" id="post1">
-          <h2>Os últimos capítulos de <em>City Sem Filtro</em></h2>
-          <div class="meta">Postado em 10/10/2025 · <span class="tag">Série</span><span class="tag">Streaming</span></div>
-          <p>Resumo (sem spoilers pesados): o penúltimo episódio costura os arcos de Joana e Yuri, enquanto o final entrega uma reviravolta que conecta a 1ª temporada. Comentamos fotografia, trilha e direção — e o que esperar da temporada 3.</p>
+          <h2> <em>City Sem Filtro</em></h2>
+          <div class="meta">Postado em 16/10/2025 · <span class="tag">Série</span><span class="tag">Streaming</span></div>
+          <p>Resumo ( Ao Ingressar no The Voice Kids, ela se sentia confiante, até quando Christina Aguillera disse que nao se saiu bem na apresentação, que logo após foi eliminada 3.</p>
           <ul>
             <li>Trilha original com referências ao manguebeat;</li>
             <li>Direção mais dinâmica nos 20min finais;</li>
-            <li>Teorias para a próxima temporada.</li>
+            <li>...</li>
           </ul>
         </article>
 
         <article class="cartao" id="post2">
-          <h2>Lançamentos de outubro: cinema nacional em cartaz</h2>
-          <div class="meta">Postado em 08/10/2025 · <span class="tag">Filmes</span><span class="tag">Agenda</span></div>
-          <p>Guia rápido dos títulos que estreiam neste mês — do suspense independente à comédia de estrada. Damos notas de expectativa e onde assistir (salas ou plataformas).</p>
+          <h2>Entrada com o Álbum Portals</h2>
+          <div class="meta">Postado em 16/10/2025 · <span class="tag">Melanie Martinez</span><span class="tag">Agenda</span></div>
+          <p>Críticas ao álbum Portals.</p>
           <p><strong>Dica:</strong> clique em “Tema” para conforto visual à noite.</p>
         </article>
 
         <article class="cartao" id="post3">
           <h2>Resenha: <em>Ritmo do Subúrbio</em></h2>
-          <div class="meta">Postado em 02/10/2025 · <span class="tag">Resenha</span><span class="tag">Música & Cinema</span></div>
-          <p>Com atuações naturais e câmera de mão, o longa acerta ao misturar drama familiar com cultura funk. Falamos de montagem, desenvolvimento de personagem e representatividade.</p>
-          <p id="lancamentos"></p>
+          <div class="meta">Postado em 16/10/2025 · <span class="tag">Resenha</span><span class="tag">Música & Artes </span></div>
+          <p>.</p>
+          <p id="lancamentos"></p>Sobre o tema central da Web
         </article>
 
         <article class="cartao destaque" id="post4">
-          <h2>Guia do fim de semana: o que maratonar</h2>
-          <div class="meta">Postado em 01/10/2025 · <span class="tag">Lista</span><span class="tag">Streaming</span></div>
-          <p>Seleção de 5 séries nacionais curtinhas para fechar em 2 dias. Cada indicação tem duração total, classificação e vibe.</p>
+          <h2>Como dar Stream nas musicas?</h2>
+          <div class="meta">Postado em 16/10/2025 · <span class="tag">Lista</span><span class="tag">Streaming</span></div>
+          <p>Como fazer pars Melanie Martinez participar de premiações</p>
           <ol>
             <li><strong>Praça 21</strong> — sitcom leve (180 min);</li>
             <li><strong>Margem Norte</strong> — doc true crime (220 min);</li>
             <li><strong>Lab 404</strong> — sci-fi teen (200 min);</li>
             <li><strong>Capitais</strong> — antologia musical (150 min);</li>
-            <li><strong>Velas & Vagalumes</strong> — drama coming-of-age (210 min).</li>
+            <li><strong>Faerie Soirée</strong> — drama coming-of-age (210 min).</li>
           </ol>
         </article>
 
         <article class="cartao" id="resenhas">
-          <h2>Editorial: por que falar de audiovisual brasileiro?</h2>
+          <h2>Editorial: por que ela é tão criativa?</h2>
           <div class="meta">Postado em 28/09/2025 · <span class="tag">Opinião</span></div>
-          <p>Valorizar nossas produções é fortalecer a cultura, os empregos criativos e a diversidade de narrativas. Aqui, o leitor participa com comentários e indicações.</p>
+          <p>Como achar sua conta do Instagram.</p>
         </article>
       </section>
 
@@ -170,9 +170,9 @@
       <aside aria-label="Conteúdo extra">
         <div class="bloco">
           <h3>Conteúdo extra</h3>
-          <p>Listas rápidas, bastidores e trailers comentados.</p>
+          <p>Listas rápidas, Cancelamento de MVs incompletos de Álbuns.</p>
           <ul>
-            <li>Top 5 aberturas de séries BR</li>
+            <li>Top 5 aberturas de MVs BR</li>
             <li>Calendário de festivais</li>
             <li>Entrevistas curtas</li>
           </ul>
@@ -189,7 +189,7 @@
 
         <div class="bloco" id="contato">
           <h3>Contato</h3>
-          <p>Envie sugestões: <a href="#" onclick="alert('Exemplo: contato@cinebr.example')">contato@cinebr.example</a></p>
+          <p>Envie sugestões: <a href="#" onclick="alert('Exemplo: contato@cinebr.example')">contato@HistMartinez.example</a></p>
         </div>
       </aside>
     </main>
